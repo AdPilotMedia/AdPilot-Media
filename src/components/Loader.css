@@ -1,0 +1,38 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.loader-logo img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
+
+.loader-bar-wrap {
+  width: 220px;
+  height: 3px;
+  background: #e8eaf6;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1a2aff, #ff6b00);
+  border-radius: 2px;
+}
+
+.loader p {
+  color: #9ca3af;
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,12 @@
+/* App level overrides */
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
+@media (max-width: 480px) {
+  html, body { overflow-x: hidden; max-width: 100vw; }
+}

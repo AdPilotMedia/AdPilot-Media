@@ -1,0 +1,260 @@
+/* ===== TEAM SECTION ===== */
+.team {
+  padding: 130px 80px;
+  background: #030712;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid bg */
+.team::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(26,42,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,42,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Ambient glow blobs */
+.team::after {
+  content: '';
+  position: absolute;
+  top: -120px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(26,42,255,0.12) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* ===== SCROLL WRAP ===== */
+.team-scroll-wrap {
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 20px;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26,42,255,0.25) transparent;
+}
+.team-scroll-wrap:active { cursor: grabbing; }
+.team-scroll-wrap::-webkit-scrollbar { height: 4px; }
+.team-scroll-wrap::-webkit-scrollbar-track { background: transparent; }
+.team-scroll-wrap::-webkit-scrollbar-thumb { background: rgba(26,42,255,0.25); border-radius: 10px; }
+
+.team-scroll-track {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: max-content;
+  padding: 8px 4px 4px;
+}
+
+.team-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+/* ===== CARD ===== */
+.team-card {
+  width: 230px;
+  flex-shrink: 0;
+  padding: 0 0 22px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%);
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.38s cubic-bezier(0.22,0.68,0,1.2), box-shadow 0.38s;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 0 1.5px var(--card-accent, #1a2aff);
+  backdrop-filter: blur(12px);
+}
+
+/* Top accent line — always visible */
+.team-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-accent, #1a2aff);
+  z-index: 2;
+  border-radius: 28px 28px 0 0;
+}
+
+.team-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 2px var(--card-accent, #1a2aff), 0 0 32px var(--card-accent, #1a2aff);
+}
+
+/* ===== AVATAR ===== */
+.tc-avatar {
+  width: 100%;
+  height: 200px;
+  border-radius: 28px 28px 0 0;
+  margin: 0 0 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: none !important;
+}
+
+.tc-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.22,0.68,0,1.1);
+}
+.tc-avatar:hover img { transform: scale(1.07); }
+
+.tc-avatar-zoom {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6));
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 12px;
+  font-size: 1.3rem;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.tc-avatar:hover .tc-avatar-zoom { opacity: 1; }
+
+/* ===== CARD TEXT ===== */
+.team-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #f1f5f9;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+  padding: 0 16px;
+}
+
+.tc-role {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin: 0 16px 14px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.team-card p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  margin: 0 0 18px;
+  padding: 0 18px;
+}
+
+.tc-line {
+  height: 2px;
+  width: 40px;
+  border-radius: 2px;
+  margin: 0 auto;
+  opacity: 0.6;
+}
+
+/* ===== SCROLL HINT ===== */
+.team-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  user-select: none;
+}
+.team-scroll-hint svg {
+  animation: scrollPulse 1.6s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { transform: translateX(0); opacity: 0.3; }
+  50% { transform: translateX(6px); opacity: 1; }
+}
+.tc-modal-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+.tc-modal {
+  background: linear-gradient(160deg, #0f1535, #0a0d2e);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  overflow: hidden;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+}
+
+.tc-modal img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.tc-modal-info {
+  padding: 20px 24px 24px;
+  text-align: center;
+}
+.tc-modal-info h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+.tc-modal-info p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.tc-modal-close {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: 50%;
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: background 0.2s, transform 0.2s;
+}
+.tc-modal-close:hover { background: #e53e3e; transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) { .team { padding: 80px 40px; } }
+@media (max-width: 640px) {
+  .team { padding: 56px 12px; }
+  .team-card { width: 148px; border-radius: 20px; }
+  .tc-avatar { height: 130px; border-radius: 20px 20px 0 0; }
+  .team-card h3 { font-size: 0.76rem; padding: 0 10px; }
+  .tc-role { font-size: 0.48rem; padding: 2px 7px; margin: 0 8px 8px; letter-spacing: 0.6px; }
+  .team-card p { font-size: 0.66rem; margin-bottom: 10px; padding: 0 10px; line-height: 1.5; }
+  .tc-line { width: 24px; }
+  .team-row { gap: 10px; }
+  .team-scroll-track { gap: 10px; }
+}

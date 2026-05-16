@@ -1,0 +1,72 @@
+.about { padding: 120px 80px; background: #030712; position: relative; overflow: hidden; }
+.about::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(79,110,247,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(255,107,0,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.about-inner {
+  display: flex; align-items: center; gap: 80px;
+  max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;
+}
+.about-left { flex: 1; }
+.about-desc { font-family: 'Plus Jakarta Sans', sans-serif; color: #94a3b8; font-size: 0.97rem; line-height: 1.9; margin-bottom: 16px; }
+.about-points { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-top: 24px; }
+.about-points li { display: flex; align-items: center; gap: 12px; font-family: 'Plus Jakarta Sans', sans-serif; color: #cbd5e1; font-size: 0.9rem; font-weight: 500; padding: 10px 14px; background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.12); border-radius: 12px; transition: all 0.2s; }
+.about-points li:hover { background: rgba(99,102,241,0.1); border-color: rgba(99,102,241,0.25); transform: translateX(4px); }
+
+.about-right { width: 460px; flex-shrink: 0; }
+
+.about-highlights-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 18px;
+}
+.ahl-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: box-shadow 0.35s, border-color 0.35s, transform 0.35s;
+  position: relative; overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+.ahl-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+  border-radius: 22px 22px 0 0;
+}
+.ahl-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.4); border-color: rgba(79,110,247,0.25); transform: translateY(-4px); }
+.ahl-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.ahl-title { font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 900; color: #f1f5f9; margin-bottom: 7px; }
+.ahl-desc { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; color: #64748b; line-height: 1.65; }
+
+.about-cert-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; flex-wrap: wrap;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 16px 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.acb-item { display: flex; align-items: center; gap: 7px; font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 700; color: #94a3b8; }
+.acb-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.acb-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.08); }
+
+@media (max-width: 1100px) { .about { padding: 80px 40px; } .about-right { width: 380px; } }
+@media (max-width: 860px) { .about-inner { flex-direction: column; gap: 40px; } .about-right { width: 100%; } }
+@media (max-width: 640px) {
+  .about { padding: 56px 16px; }
+  .about-highlights-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .about-desc { font-size: 0.88rem; }
+  .about-points li { font-size: 0.83rem; padding: 9px 12px; }
+  .about-cert-bar { padding: 12px 14px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .acb-item { font-size: 0.7rem; }
+  .acb-divider { display: none; }
+  .ahl-card { padding: 18px 14px; }
+  .ahl-title { font-size: 0.85rem; }
+  .ahl-desc { font-size: 0.74rem; }
+  .section-title { font-size: 1.7rem !important; }
+}
